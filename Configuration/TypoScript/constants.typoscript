@@ -1,0 +1,15 @@
+
+plugin.tx_chartum_visuelgraph {
+    view {
+        # cat=plugin.tx_chartum_visuelgraph/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:chartum/Resources/Private/Templates/
+        # cat=plugin.tx_chartum_visuelgraph/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:chartum/Resources/Private/Partials/
+        # cat=plugin.tx_chartum_visuelgraph/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:chartum/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_chartum_visuelgraph//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

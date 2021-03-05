@@ -1,0 +1,22 @@
+{
+    "name": "dept49/chartum",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dept49\\Chartum\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dept49\\Chartum\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "typo3-ter/chartum": "self.version"
+    }
+}

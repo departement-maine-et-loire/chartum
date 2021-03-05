@@ -1,0 +1,44 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 9.5.0-9.5.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "9.5.0-9.5.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "chartum",
+        "name": "Visualisation CSV",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "VisuelGraph => list",
+                    "noncacheableActions": "VisuelGraph => list",
+                    "switchableActions": ""
+                },
+                "description": "",
+                "key": "visuelgraph",
+                "name": "Visuel Graphique"
+            }
+        ],
+        "vendorName": "Dept49"
+    },
+    "wires": [],
+    "storagePath": "\/var\/www\/html\/public\/typo3conf\/ext\/",
+    "log": {
+        "last_modified": "2021-03-03 02:32",
+        "extension_builder_version": "9.10.4",
+        "be_user": " (8)"
+    }
+}

@@ -17,6 +17,7 @@
         }
     },
     "replace": {
+	"dept49/chartum": "self.version",
         "typo3-ter/chartum": "self.version"
     }
 }

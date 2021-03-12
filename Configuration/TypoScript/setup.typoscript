@@ -1,7 +1,7 @@
 
 plugin.tx_chartum_visuelgraph {
     view {
-        templateRootPaths.0 = EXT:chartum/Resources/Private/Templates/
+        templateRootPaths.0 = EXT:chartum/Resources/Private/Templates/Chartum
         templateRootPaths.1 = {$plugin.tx_chartum_visuelgraph.view.templateRootPath}
         partialRootPaths.0 = EXT:chartum/Resources/Private/Partials/
         partialRootPaths.1 = {$plugin.tx_chartum_visuelgraph.view.partialRootPath}

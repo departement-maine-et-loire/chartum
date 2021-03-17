@@ -15,6 +15,43 @@
                             </config>
                         </TCEforms>
                     </settings.text>
+                    <settings.form>
+                        <TCEforms>
+                            <label>Select number</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">Line</numIndex>
+                                        <numIndex index="1">Line</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">Bar</numIndex>
+                                        <numIndex index="1">Bar</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">Doughnut</numIndex>
+                                        <numIndex index="1">Doughnut</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">Pie</numIndex>
+                                        <numIndex index="1">Pie</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.form>
+                    <settings.input>
+                        <TCEforms>
+                            <label>colorpicker</label>
+                            <config>
+                                <type>input</type>
+                                <renderType>colorpicker</renderType>
+                                
+                            </config>
+                        </TCEforms>
+                    </settings.input>  
                 </el>
             </ROOT>
         </sDEF>

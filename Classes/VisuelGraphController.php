@@ -10,6 +10,8 @@ class VisuelGraphController extends ActionController {
 
         $settings = $this->settings;
         $this->view->assign('Text', $settings['text']);
+        $this->view->assign('Select', $settings['form']);
+        $this->view->assign('Input', $settings['input']);
 
     }
 

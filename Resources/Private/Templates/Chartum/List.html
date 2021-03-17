@@ -1,5 +1,27 @@
 <f:layout name="Default" />
 <f:section name="content">
     <noscript>Veuillez Activer JS</noscript>
-    <div class="chartum">{Text}</div>
+    <div style="background-color: {Input}; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+    <div>{Text}</div>
+    <f:if condition="{Select} == 'Pie'">
+        <p>Pas Pie</p>
+     <img src="https://images.immediate.co.uk/production/volatile/sites/30/2019/05/Apple-pie-eccbfb3.jpg" alt="pie" height=350px width=350px />
+     <a href="https://images.immediate.co.uk/production/volatile/sites/30/2019/05/Apple-pie-eccbfb3.jpg" download>Télécharger</a>
+    </f:if>
+    <f:if condition="{Select} == 'Doughnut'">
+        <p>mmmmmm Des donuts</p>
+     <img src="https://www.theflavorbender.com/wp-content/uploads/2014/09/Simpsons-Doughnuts-4238-Copy-1.jpg" alt="doughnuts" height=350px width=350px/>
+     <a href="https://www.theflavorbender.com/wp-content/uploads/2014/09/Simpsons-Doughnuts-4238-Copy-1.jpg" download>Télécharger</a>
+    </f:if>
+    <f:if condition="{Select} == 'Bar'">
+        <p>Contentieux avec la poiscaille </p>
+     <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Dicentrarchus_labrax01.jpg" alt="bar" height=350px width=350px/>
+     <a href="https://upload.wikimedia.org/wikipedia/commons/6/68/Dicentrarchus_labrax01.jpg" download>Télécharger</a>
+    </f:if>
+    <f:if condition="{Select} == 'Line'">
+        <p>J'ai la pêche</p>
+     <img src="https://sohealthy.fr/wp-content/uploads/2019/02/Pe%CC%82che-a%CC%80-la-ligne-se-recentrer-sur-soi.jpg" alt="line" height=350px width=350px/>
+     <a href="https://sohealthy.fr/wp-content/uploads/2019/02/Pe%CC%82che-a%CC%80-la-ligne-se-recentrer-sur-soi.jpg" download>Télécharger</a>
+    </f:if>
+    </div>
 </f:section>

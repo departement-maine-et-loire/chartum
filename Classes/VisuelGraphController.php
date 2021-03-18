@@ -12,7 +12,24 @@ class VisuelGraphController extends ActionController {
         $this->view->assign('Text', $settings['text']);
         $this->view->assign('Select', $settings['form']);
         $this->view->assign('Input', $settings['input']);
+        //$this->view->assign('Input_2', $settings['input_2']);
+        $csv = $this->getcsvdata($settings['input_2']);
+        $this->view->assign('csvdata', $csv);
+    }
 
+
+
+    public function getcsvdata ($path) {
+        $file = fopen($path, 'r');
+        $array = [];
+        
+        while ($row = fgetcsv($file)) {
+            array_push($array, $row); 
+        }
+        
+        $json = json_encode($array);
+        var_dump($array);
+        return $json;
     }
 
 }

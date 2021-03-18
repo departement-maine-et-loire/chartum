@@ -7,6 +7,14 @@
                 </TCEforms>
                 <type>array</type>
                 <el>
+                    <settings.input_2>
+                        <TCEforms>
+                            <label>Ajouter fichier CSV</label>
+                            <config>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.input_2>
                     <settings.text>
                         <TCEforms>
                             <label>Add Title</label>

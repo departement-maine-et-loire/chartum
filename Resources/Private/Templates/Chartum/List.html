@@ -1,5 +1,6 @@
 <f:layout name="Default" />
 <f:section name="content">
+    <f:debug>{_all}</f:debug>
     <noscript>Veuillez Activer JS</noscript>
     <div style="background-color: {Input}; display:flex; flex-direction:column; justify-content:center; align-items:center;">
     <div>{Text}</div>
@@ -23,5 +24,10 @@
      <img src="https://sohealthy.fr/wp-content/uploads/2019/02/Pe%CC%82che-a%CC%80-la-ligne-se-recentrer-sur-soi.jpg" alt="line" height=350px width=350px/>
      <a href="https://sohealthy.fr/wp-content/uploads/2019/02/Pe%CC%82che-a%CC%80-la-ligne-se-recentrer-sur-soi.jpg" download>Télécharger</a>
     </f:if>
+    <script>
+       var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+       console.log(<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>)
+;
+    </script>
     </div>
 </f:section>

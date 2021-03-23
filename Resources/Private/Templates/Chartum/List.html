@@ -1,33 +1,195 @@
 <f:layout name="Default" />
-<f:section name="content">
-    <f:debug>{_all}</f:debug>
-    <noscript>Veuillez Activer JS</noscript>
-    <div style="background-color: {Input}; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-    <div>{Text}</div>
-    <f:if condition="{Select} == 'Pie'">
-        <p>Pas Pie</p>
-     <img src="https://images.immediate.co.uk/production/volatile/sites/30/2019/05/Apple-pie-eccbfb3.jpg" alt="pie" height=350px width=350px />
-     <a href="https://images.immediate.co.uk/production/volatile/sites/30/2019/05/Apple-pie-eccbfb3.jpg" download>Télécharger</a>
-    </f:if>
-    <f:if condition="{Select} == 'Doughnut'">
-        <p>mmmmmm Des donuts</p>
-     <img src="https://www.theflavorbender.com/wp-content/uploads/2014/09/Simpsons-Doughnuts-4238-Copy-1.jpg" alt="doughnuts" height=350px width=350px/>
-     <a href="https://www.theflavorbender.com/wp-content/uploads/2014/09/Simpsons-Doughnuts-4238-Copy-1.jpg" download>Télécharger</a>
-    </f:if>
-    <f:if condition="{Select} == 'Bar'">
-        <p>Contentieux avec la poiscaille </p>
-     <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Dicentrarchus_labrax01.jpg" alt="bar" height=350px width=350px/>
-     <a href="https://upload.wikimedia.org/wikipedia/commons/6/68/Dicentrarchus_labrax01.jpg" download>Télécharger</a>
-    </f:if>
-    <f:if condition="{Select} == 'Line'">
-        <p>J'ai la pêche</p>
-     <img src="https://sohealthy.fr/wp-content/uploads/2019/02/Pe%CC%82che-a%CC%80-la-ligne-se-recentrer-sur-soi.jpg" alt="line" height=350px width=350px/>
-     <a href="https://sohealthy.fr/wp-content/uploads/2019/02/Pe%CC%82che-a%CC%80-la-ligne-se-recentrer-sur-soi.jpg" download>Télécharger</a>
-    </f:if>
-    <script>
-       var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
-       console.log(<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>)
-;
-    </script>
+    <f:section name="content">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+        <f:debug>{_all}</f:debug>
+        <noscript>Veuillez Activer JS</noscript>
+        <div style="background-color: {Input}; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+        <div>{Text}</div>
+            <f:if condition="{Select} == 'Pie'">
+                <script>
+                    var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+                    console.log(<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>);
+        
+        //ChartJS
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                        labels: obj[0],
+                        datasets: [{
+                            label: 'Total mensuel',
+                            data: obj[1],
+                            backgroundColor: [
+                                'rgba(7,87,97,0.2)',
+                            ],
+                            borderColor: '#075761',
+                            lineTension: 0,
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: '#075761',
+                            },
+                            {
+                            label: 'Moyenne Interannuelle',
+                            data: obj[2],
+                            borderColor: '#de3153',
+                            lineTension: 0,
+                            backgroundColor: "rgba(255,255,255,0.2)",
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: '#de3153', 
+                            }] 
+                        }
+                    })
+                </script>
+            </f:if>
+            <f:if condition="{Select} == 'Doughnut'">
+                <script>
+                    var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+                    console.log(<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>);
+        
+        //ChartJS
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                        labels: obj[0],
+                        datasets: [{
+                            label: 'Total mensuel',
+                            data: obj[1],
+                            backgroundColor: [
+                                'rgba(7,87,97,0.2)',
+                            ],
+                            borderColor: '#075761',
+                            lineTension: 0,
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: '#075761',
+                            },
+                            {
+                            label: 'Moyenne Interannuelle',
+                            data: obj[2],
+                            borderColor: '#de3153',
+                            lineTension: 0,
+                            backgroundColor: "rgba(255,255,255,0.2)",
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: '#de3153', 
+                            }] 
+                        }
+                    })
+                </script>
+            </f:if>
+            <f:if condition="{Select} == 'Bar'">
+                <script>
+                    var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+                    console.log(<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>);
+        
+        //ChartJS
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                        labels: obj[0],
+                        datasets: [{
+                            label: 'Total mensuel',
+                            data: obj[1],
+                            backgroundColor: [
+                                'rgba(7,87,97,0.2)',
+                            ],
+                            borderColor: '#075761',
+                            lineTension: 0,
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: '#075761',
+                            },
+                            {
+                            label: 'Moyenne Interannuelle',
+                            data: obj[2],
+                            borderColor: '#de3153',
+                            lineTension: 0,
+                            backgroundColor: "rgba(255,255,255,0.2)",
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: '#de3153', 
+                            }] 
+                        }
+                    })
+                </script>
+            </f:if>
+            <f:if condition="{Select} == 'Line'">
+                <script>
+                    var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+                    console.log(<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>);
+        
+        //ChartJS
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                        labels: obj[0],
+                        datasets: [{
+                            label: '',
+                            data: obj[1],
+                            backgroundColor: [
+                                'rgba(7,87,97,0.2)',
+                            ],
+                            borderColor: '#075761',
+                            lineTension: 0,
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: '#075761',
+                            },
+                            {
+                            label: '',
+                            data: obj[2],
+                            borderColor: '#de3153',
+                            lineTension: 0,
+                            backgroundColor: "rgba(255,255,255,0.2)",
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: '#de3153', 
+                            }] 
+                        }
+                    });
+                </script>
+            </f:if>
+            <f:if condition="{Select} == 'Radar'">
+                <script>
+                    var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+                    console.log(obj);
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var arraydata = [];
+                    for(var i=1 ;i<obj.length ;i++) {
+
+                        var dataset = {
+                            label: i,
+                            data: obj[i],
+                            backgroundColor: [
+                                'rgba(7,87,97,0.2)',
+                            ],
+                            borderColor: '#075761',
+                            lineTension: 0,
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: '#075761',}
+
+                        arraydata.push(dataset);
+
+                    }
+                    
+                        console.log(arraydata);
+                        var myChart = new Chart(ctx, {
+                            
+                            type: 'radar',
+                            data: {
+                                labels: obj[0],
+                                
+                                 datasets: arraydata
+                            }
+                            
+                        })
+                        
+                        
+                    
+                </script>
+                <script>
+                    var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+                    console.log(obj);
+
+                </script>
+            </f:if>
+        <canvas class="chartum" id="myChart"></canvas>
+        <a href="fileadmin/user_upload/img_1492_0.csv" download>Télécharger</a>
     </div>
 </f:section>

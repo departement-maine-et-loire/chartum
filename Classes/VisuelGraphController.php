@@ -15,6 +15,8 @@ class VisuelGraphController extends ActionController {
         //$this->view->assign('Input_2', $settings['input_2']);
         $csv = $this->getcsvdata($settings['input_2']);
         $this->view->assign('csvdata', $csv);
+        $this->view->assign('Legende1', $settings['text_2']);
+        $this->view->assign('Legende2', $settings['text_3']); 
     }
 
 

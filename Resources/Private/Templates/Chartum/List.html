@@ -152,18 +152,18 @@
                     var ctx = document.getElementById('myChart').getContext('2d');
                     var arraydata = [];
                     for(var i=1 ;i<obj.length ;i++) {
-
+                        var objlength = obj[i].length;
+                        var color = obj[i][objlength-1];
+                        var transcolor = "30";
                         var dataset = {
-                            label: i,
-                            data: obj[i],
-                            backgroundColor: [
-                                'rgba(7,87,97,0.2)',
-                            ],
-                            borderColor: '#075761',
+                            label: obj[i][0],
+                            data: obj[i].slice(1, obj[i].length - 1),
+                            backgroundColor: color.concat(transcolor),
+                            borderColor:  color ,
                             lineTension: 0,
                             pointBackgroundColor: 'white',
-                            pointBorderColor: '#075761',}
-
+                            pointBorderColor: color,}
+                            console.log(obj[i].slice(1, objlength -2))
                         arraydata.push(dataset);
 
                     }
@@ -171,9 +171,9 @@
                         console.log(arraydata);
                         var myChart = new Chart(ctx, {
                             
-                            type: 'radar',
+                            type: 'line',
                             data: {
-                                labels: obj[0],
+                                labels: obj[0].slice(1, obj[0].length -1),
                                 
                                  datasets: arraydata
                             }

@@ -158,7 +158,7 @@
                         var dataset = {
                             label: obj[i][0],
                             data: obj[i].slice(1, obj[i].length - 1),
-                            backgroundColor: color.concat(transcolor),
+                            backgroundColor: 'rgba(255, 102, 204, 0.3)',
                             borderColor:  color ,
                             lineTension: 0,
                             pointBackgroundColor: 'white',
@@ -190,6 +190,6 @@
                 </script>
             </f:if>
         <canvas class="chartum" id="myChart"></canvas>
-        <a href="fileadmin/user_upload/img_1492_0.csv" download>Télécharger</a>
+        <a href="fileadmin/user_upload/downloadfile.csv" download>Télécharger</a>
     </div>
 </f:section>

@@ -23,22 +23,6 @@
                             </config>
                         </TCEforms>
                     </settings.text>
-                    <settings.text_2>
-                        <TCEforms>
-                            <label>Légende 1</label>
-                            <config>
-                                <type>text</type>
-                            </config>
-                        </TCEforms>
-                    </settings.text_2>
-                    <settings.text_3>
-                        <TCEforms>
-                            <label>Légende 2</label>
-                            <config>
-                                <type>text</type>
-                            </config>
-                        </TCEforms>
-                    </settings.text_3>
                     <settings.form>
                         <TCEforms>
                             <label>Select number</label>

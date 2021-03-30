@@ -16,7 +16,9 @@ class VisuelGraphController extends ActionController {
         $csv = $this->getcsvdata($settings['input_2']);
         $this->view->assign('csvdata', $csv);
         $this->view->assign('Legende1', $settings['text_2']);
-        $this->view->assign('Legende2', $settings['text_3']); 
+        $this->view->assign('Legende2', $settings['text_3']);
+        $outputPath = "fileadmin/user_upload/downloadfile.csv";
+        $this->createCsvWithoutColor($settings['input_2'], $outputPath);
     }
 
 
@@ -30,9 +32,31 @@ class VisuelGraphController extends ActionController {
         }
         
         $json = json_encode($array);
-        var_dump($array);
+        
         return $json;
     }
+
+    public function createCsvWithoutColor($inputPath, $outputPath) {
+
+        
+
+        if (($handle = fopen($inputPath, "r")) !==  FALSE) {
+            $newcsv = fopen($outputPath, "w");
+            while (($data = fgetcsv($handle)) !== FALSE) {
+
+                fputcsv($newcsv, array_slice($data, 0, -2));
+                var_dump($data);
+               // var_dump(array_slice($data, 0, -2));
+            }
+            fclose($handle);
+            fclose($newcsv);
+
+
+        }
+
+    }
+
+        
 
 }
 

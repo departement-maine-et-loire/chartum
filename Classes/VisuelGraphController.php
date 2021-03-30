@@ -45,8 +45,6 @@ class VisuelGraphController extends ActionController {
             while (($data = fgetcsv($handle)) !== FALSE) {
 
                 fputcsv($newcsv, array_slice($data, 0, -2));
-                var_dump($data);
-               // var_dump(array_slice($data, 0, -2));
             }
             fclose($handle);
             fclose($newcsv);

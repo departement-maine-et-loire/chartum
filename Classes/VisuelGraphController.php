@@ -38,7 +38,7 @@ class VisuelGraphController extends ActionController {
 
     public function createCsvWithoutColor($inputPath, $outputPath) {
 
-        
+        if (file_exists($outputPath) !== TRUE)  {
 
         if (($handle = fopen($inputPath, "r")) !==  FALSE) {
             $newcsv = fopen($outputPath, "w");
@@ -47,15 +47,37 @@ class VisuelGraphController extends ActionController {
                 fputcsv($newcsv, array_slice($data, 0, -2));
             }
             fclose($handle);
-            fclose($newcsv);
-
-
+            fclose($newcsv);   
         }
+        return $outputPath;
+    }
+    
+    $inputfile1 = filemtime($inputPath);
+    $outputfile2 = filemtime($outputPath);
 
+    $inputModifiedDate = date("d M Y H:i:s", $inputfile1);
+    $outputModifiedDate = date("d M Y H:i:s", $outputfile2);
+
+    if ($inputModifiedDate > $outputModifiedDate) {
+
+        if (($handle = fopen($inputPath, "r")) !==  FALSE) {
+            $newcsv = fopen($outputPath, "w");
+            while (($data = fgetcsv($handle)) !== FALSE) {
+
+                fputcsv($newcsv, array_slice($data, 0, -2));
+            }
+            fclose($handle);
+            fclose($newcsv);   
+        }
+        return $outputPath;
     }
 
-        
+    if ($inputModifiedDate < $outputModifiedDate) {
+        return $outputPath;
+    }
+    
+   
+    }
 
 }
-
 ?>

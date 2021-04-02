@@ -153,12 +153,12 @@
                     var arraydata = [];
                     for(var i=1 ;i<obj.length ;i++) {
                         var objlength = obj[i].length;
-                        var color = obj[i][objlength-1];
-                        var transcolor = "30";
+                        var color = obj[i][objlength-2];
+                        var transcolor = obj[i][objlength-1];
                         var dataset = {
                             label: obj[i][0],
                             data: obj[i].slice(1, obj[i].length - 1),
-                            backgroundColor: 'rgba(255, 102, 204, 0.3)',
+                            backgroundColor: color + transcolor,
                             borderColor:  color ,
                             lineTension: 0,
                             pointBackgroundColor: 'white',
@@ -190,6 +190,6 @@
                 </script>
             </f:if>
         <canvas class="chartum" id="myChart"></canvas>
-        <a href="fileadmin/user_upload/downloadfile.csv" download>Télécharger</a>
+        <a href="fileadmin/user_upload/{download}.csv" download>Télécharger</a>
     </div>
 </f:section>

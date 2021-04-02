@@ -15,11 +15,15 @@ class VisuelGraphController extends ActionController {
         //$this->view->assign('Input_2', $settings['input_2']);
         $csv = $this->getcsvdata($settings['input_2']);
         $this->view->assign('csvdata', $csv);
-        $this->view->assign('Legende1', $settings['text_2']);
-        $this->view->assign('Legende2', $settings['text_3']);
-        $outputPath = "fileadmin/user_upload/downloadfile.csv";
+        $this->view->assign('Input3', $settings['input_3']);
+        $downloadfile = 
+        $this->configurationManager->getContentObject()->data['uid'];
+        $outfile = hash('sha1', $downloadfile);
+        $this->view->assign('download', $outfile);
+        $outputPath = "fileadmin/user_upload/$outfile.csv";
         $this->createCsvWithoutColor($settings['input_2'], $outputPath);
-    }
+        
+        }
 
 
 

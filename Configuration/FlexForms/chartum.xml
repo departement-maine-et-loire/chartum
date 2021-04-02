@@ -63,7 +63,15 @@
                                 
                             </config>
                         </TCEforms>
-                    </settings.input>  
+                    </settings.input>
+                    <settings.input_3>
+                        <TCEforms>
+                            <label>Nom du ficher Téléchargeable</label>
+                            <config>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.input_3>  
                 </el>
             </ROOT>
         </sDEF>

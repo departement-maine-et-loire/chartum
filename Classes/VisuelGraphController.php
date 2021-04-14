@@ -11,11 +11,12 @@ class VisuelGraphController extends ActionController {
         $settings = $this->settings;
         $this->view->assign('Text', $settings['text']);
         $this->view->assign('Select', $settings['form']);
-        $this->view->assign('Input', $settings['input']);
-        //$this->view->assign('Input_2', $settings['input_2']);
-        $csv = $this->getcsvdata($settings['input_2']);
-        $this->view->assign('csvdata', $csv);
-        $this->view->assign('Input3', $settings['input_3']);
+        $csvdata = $this->getcsvdata($settings['input_2']);
+        $this->view->assign('csvdata', $csvdata);
+        $csvlabel = $this->getcsvlabel($settings['input_2']);
+        $this->view->assign('csvlabel', $csvlabel);
+        $csvlabels = $this->getcsvlabels($settings['input_2']);
+        $this->view->assign('csvlabels', $csvlabels);
         $downloadfile = 
         $this->configurationManager->getContentObject()->data['uid'];
         $outfile = hash('sha1', $downloadfile);
@@ -29,16 +30,55 @@ class VisuelGraphController extends ActionController {
 
     public function getcsvdata ($path) {
         $file = fopen($path, 'r');
-        $array = [];
-        
+        $data = [];
+           
         while ($row = fgetcsv($file)) {
-            array_push($array, $row); 
+             
+            array_push($data, array_slice($row, 1, -2));
+
         }
-        
-        $json = json_encode($array);
-        
-        return $json;
+        array_shift($data);
+        $jsondata = json_encode($data);
+
+        return $jsondata;
     }
+
+    public function getcsvlabel($path) {
+
+        $file = fopen($path, 'r');
+        $label = [];
+
+        while ($row2 = fgetcsv($file)) {
+            array_push($label, $row2[0]);
+        }
+        array_shift($label);
+        var_dump($label);
+        $jsonlabel = json_encode($label);
+
+        return $jsonlabel;
+    }
+
+    public function getcsvlabels($path) {
+
+        $file = fopen($path, 'r');
+        $labels = [];
+
+        while ($row3 = fgetcsv($file)) {
+            array_push($labels, array_slice($row3, 1, -2));
+        }
+        $onlylabels = [];
+        array_push($onlylabels, $labels[0]);
+        $jsonlabels = json_encode($onlylabels);
+
+        return $jsonlabels;
+
+    }
+
+    public function getcsvcolors($path) {
+
+    }
+
+    
 
     public function createCsvWithoutColor($inputPath, $outputPath) {
 
@@ -81,6 +121,11 @@ class VisuelGraphController extends ActionController {
     }
     
    
+    }
+
+    public function csvPieData ($path) {
+        $file = fopen($path, 'r');
+        
     }
 
 }

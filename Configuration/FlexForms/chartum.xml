@@ -17,7 +17,7 @@
                     </settings.input_2>
                     <settings.text>
                         <TCEforms>
-                            <label>Add Title</label>
+                            <label>Ajouter un titre au graphique</label>
                             <config>
                                 <type>text</type>
                             </config>
@@ -25,53 +25,35 @@
                     </settings.text>
                     <settings.form>
                         <TCEforms>
-                            <label>Select number</label>
+                            <label>Selectionner un type de graphique</label>
                             <config>
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0">
-                                        <numIndex index="0">Line</numIndex>
-                                        <numIndex index="1">Line</numIndex>
+                                        <numIndex index="0">line</numIndex>
+                                        <numIndex index="1">line</numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">Bar</numIndex>
-                                        <numIndex index="1">Bar</numIndex>
+                                        <numIndex index="0">bar</numIndex>
+                                        <numIndex index="1">bar</numIndex>
                                     </numIndex>
                                     <numIndex index="2">
-                                        <numIndex index="0">Doughnut</numIndex>
-                                        <numIndex index="1">Doughnut</numIndex>
+                                        <numIndex index="0">doughnut</numIndex>
+                                        <numIndex index="1">doughnut</numIndex>
                                     </numIndex>
                                     <numIndex index="3">
-                                        <numIndex index="0">Pie</numIndex>
-                                        <numIndex index="1">Pie</numIndex>
+                                        <numIndex index="0">pie</numIndex>
+                                        <numIndex index="1">pie</numIndex>
                                     </numIndex>
                                     <numIndex index="4">
-                                        <numIndex index="0">Radar</numIndex>
-                                        <numIndex index="1">Radar</numIndex>
+                                        <numIndex index="0">radar</numIndex>
+                                        <numIndex index="1">radar</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
                         </TCEforms>
                     </settings.form>
-                    <settings.input>
-                        <TCEforms>
-                            <label>colorpicker</label>
-                            <config>
-                                <type>input</type>
-                                <renderType>colorpicker</renderType>
-                                
-                            </config>
-                        </TCEforms>
-                    </settings.input>
-                    <settings.input_3>
-                        <TCEforms>
-                            <label>Nom du ficher Téléchargeable</label>
-                            <config>
-                                <type>input</type>
-                            </config>
-                        </TCEforms>
-                    </settings.input_3>  
                 </el>
             </ROOT>
         </sDEF>

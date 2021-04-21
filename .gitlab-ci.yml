@@ -1,0 +1,22 @@
+include:
+    - project: 'departement/global-pipeline'
+      file: '.gitlab-ci.yml'
+
+stages:
+    - deploy
+
+deploiement-preprod:
+    extends:
+        - .ssh_key
+        - .script-preprod
+    stage: deploy
+    only:
+        - Dev
+
+deploiement-prod:
+    extends:
+        - .ssh_key
+        - .script-prod
+    stage: deploy
+    only:
+        - master

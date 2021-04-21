@@ -17,6 +17,10 @@ class VisuelGraphController extends ActionController {
         $this->view->assign('csvlabel', $csvlabel);
         $csvlabels = $this->getcsvlabels($settings['input_2']);
         $this->view->assign('csvlabels', $csvlabels);
+        $csvcolors = $this->getcsvcolors($settings['input_2']);
+        $this->view->assign('csvcolors', $csvcolors);
+        $csvopacity = $this->getcsvopacity($settings['input_2']);
+        $this->view->assign('csvopacity', $csvopacity);
         $downloadfile = 
         $this->configurationManager->getContentObject()->data['uid'];
         $outfile = hash('sha1', $downloadfile);
@@ -76,6 +80,32 @@ class VisuelGraphController extends ActionController {
 
     public function getcsvcolors($path) {
 
+        $file = fopen($path, 'r');
+        $colors = [];
+
+        while ($row4 = fgetcsv($file)) {
+            array_push($colors, array_slice($row4, -2, -1));
+        }
+        array_shift($colors);
+        $jsoncolors = json_encode($colors);
+
+        return $jsoncolors;
+    }
+
+    public function getcsvopacity($path) {
+
+        $file = fopen($path, 'r');
+        $opacity = [];
+
+        while ($row5 = fgetcsv($file)) {
+            array_push($opacity, array_slice($row5, -1));
+        }
+
+        array_shift($opacity);
+        $jsonopacity = json_encode($opacity);
+
+        return $jsonopacity;
+
     }
 
     
@@ -123,10 +153,6 @@ class VisuelGraphController extends ActionController {
    
     }
 
-    public function csvPieData ($path) {
-        $file = fopen($path, 'r');
-        
-    }
-
+    
 }
 ?>

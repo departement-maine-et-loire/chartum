@@ -4,52 +4,44 @@
         <f:debug>{_all}</f:debug>
         <div>
         <div style="display:flex; justify-content:center; align-content: center;">{Text}</div> 
-            <f:if condition="{Select} === 'line'">
-                <script>
-                    var chartType = '{Select}';
-                    var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
-                    var label = JSON.parse('<f:format.htmlentitiesDecode>{csvlabel}</f:format.htmlentitiesDecode>');
-                    var labels = JSON.parse('<f:format.htmlentitiesDecode>{csvlabels}</f:format.htmlentitiesDecode>');
-                    
-                  
-
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    
-                    var arraydata = [];
-                    var arraylabels = [];
-                    
-                    for (let i = 0, j = 0; i < obj.length, j <label.length; i ++, j ++) {
-                
-                    var dataset = {
-                        
-                        label: label[j],
-                        data: obj[i],
-                        backgroundColor: '#e46bff30',
-                        borderColor: '#e46bff',
-                        lineTension: 0,
-                        pointBackgroundColor: 'white',
-                        pointBorderColor: '#e46bff',
-
-                    }
-                    arraydata.push(dataset);
-                    
-                
+            
+        <script>
+            var chartType = '{Select}';
+            var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+            var labels = JSON.parse('<f:format.htmlentitiesDecode>{csvlabels}</f:format.htmlentitiesDecode>');
+            var label = JSON.parse('<f:format.htmlentitiesDecode>{csvlabel}</f:format.htmlentitiesDecode>');
+            var colors = JSON.parse('<f:format.htmlentitiesDecode>{csvcolors}</f:format.htmlentitiesDecode>');
+            var opacity = JSON.parse('<f:format.htmlentitiesDecode>{csvopacity}</f:format.htmlentitiesDecode>');
+            var ctx = document.getElementById('myChart').getContext('2d');
+            console.log(label);
+            var arraydata = [];
+                for(let i = 0, k = 0, l = 0, m = 0; i < obj.length, k < label.length, l < colors.length, m < opacity.length; i ++, k ++, l ++, m ++) {
+                var dataset = {
+                    label: label[k],
+                    data: obj[i],
+                    backgroundColor: colors[l] + opacity[m],
+                    borderColor:  colors[l],
+                    lineTension: 0,
+                    pointBackgroundColor: 'white',
+                    pointBorderColor: colors,}
+                arraydata.push(dataset);
+                console.log(obj[i]);
                 }
-                console.log(arraydata);
-                console.log(arraylabels);
-                console.log(obj);
-                
-                for(let k = 0; k <labels.length; k ++) {
+                for(let j = 0; j < labels.length; j ++) {
                 var myChart = new Chart(ctx, {
-                    type: 'line',
+                    type: chartType,
                     data: {
-                        labels: labels[k],
+                        labels: labels[j],
                         datasets: arraydata
-                    }
-                })
+                    }   
+                })    
+                
             }
-                </script>
-            </f:if>
+        
+
+
+        </script>
+            
         <canvas class="chartum" id="myChart"></canvas>
         <a style="display:flex; justify-content:center; align-content: center;" href="fileadmin/user_upload/{download}.csv" download>Télécharger</a>
     </div>

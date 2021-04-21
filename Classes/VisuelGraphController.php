@@ -56,7 +56,6 @@ class VisuelGraphController extends ActionController {
             array_push($label, $row2[0]);
         }
         array_shift($label);
-        var_dump($label);
         $jsonlabel = json_encode($label);
 
         return $jsonlabel;

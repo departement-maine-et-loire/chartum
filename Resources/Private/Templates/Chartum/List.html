@@ -1,10 +1,10 @@
 <f:layout name="Default" />
     <f:section name="content">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+        <script src="{f:uri.resource(path:'js/chart.min.js')}"></script>
         
         <div>
         <div style="display:flex; justify-content:center; align-content: center;">{Text}</div> 
-        
+        <canvas class="chartum" id="myChart"></canvas>
         <script>
             var chartType = '{Select}';
             var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
@@ -13,21 +13,20 @@
             var colors = JSON.parse('<f:format.htmlentitiesDecode>{csvcolors}</f:format.htmlentitiesDecode>');
             var opacity = JSON.parse('<f:format.htmlentitiesDecode>{csvopacity}</f:format.htmlentitiesDecode>');
             var ctx = document.getElementById('myChart').getContext('2d');
-            
+            console.log(opacity);
             var arraydata = [];
             
             
-                for(let i = 0, k = 0, l = 0, m = 0; i < obj.length, k < label.length, l < colors.length, m < opacity.length; i ++, k ++, l ++, m ++) {
+                for(let i = 0; i < obj.length; i ++) {
                 var dataset = {
-                    label: label[k],
+                    label: label[i],
                     data: obj[i],
-                    backgroundColor: colors[l] + opacity[m],
-                    borderColor:  colors[l],
+                    backgroundColor: colors[i] + opacity[i],
+                    borderColor:  colors[i],
                     lineTension: 0,
                     pointBackgroundColor: 'white',
-                    pointBorderColor: colors,}
+                    pointBorderColor: colors[i]}
                 arraydata.push(dataset);
-                console.log(obj[i]);
                 }
 
                 for(let j = 0; j < labels.length; j ++) {
@@ -36,14 +35,16 @@
                     data: {
                         labels: labels[j],
                         datasets: arraydata
+
                     }   
+                    
                 })    
                 
             }
         </script>
         
-        <!--<f:if condition="{Select} === 'pie'">
-            <script>
+        
+            <!--<script>
                 var chartType = '{Select}';
             var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
             var labels = JSON.parse('<f:format.htmlentitiesDecode>{csvlabels}</f:format.htmlentitiesDecode>');
@@ -57,7 +58,7 @@
             for(let i = 0, l = 0, m = 0; i < obj.length, l < colors.length, m < opacity.length; i ++, l ++, m ++) {
                 var dataset = {
                     label: 'bonjour monde',
-                    data: obj[i],
+                    data: obj,
                     backgroundColor: colors[l] + opacity[m],
                     borderColor:  colors[l]
                 }
@@ -67,7 +68,7 @@
 
                 for(let j = 0; j < label.length; j ++) {
                 var myChart = new Chart(ctx, {
-                    type: chartType,
+                    type: 'pie',
                     data: {
                         labels: label[j],
                         datasets: arraydata
@@ -75,9 +76,9 @@
                 })    
                 
             }
-            </script>
-        </f:if>-->
-        <canvas class="chartum" id="myChart"></canvas>
+            </script>-->
+        
+        
         <a style="display:flex; justify-content:center; align-content: center;" href="fileadmin/user_upload/{download}.csv" download>Télécharger</a>
     </div>
 </f:section>

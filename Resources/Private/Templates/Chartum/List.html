@@ -1,0 +1,86 @@
+<f:layout name="Default" />
+    <f:section name="content">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+        
+        <div>
+        <div style="display:flex; justify-content:center; align-content: center;">{Text}</div> 
+        
+        <script>
+            var chartType = '{Select}';
+            var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+            var labels = JSON.parse('<f:format.htmlentitiesDecode>{csvlabels}</f:format.htmlentitiesDecode>');
+            var label = JSON.parse('<f:format.htmlentitiesDecode>{csvlabel}</f:format.htmlentitiesDecode>');
+            var colors = JSON.parse('<f:format.htmlentitiesDecode>{csvcolors}</f:format.htmlentitiesDecode>');
+            var opacity = JSON.parse('<f:format.htmlentitiesDecode>{csvopacity}</f:format.htmlentitiesDecode>');
+            var ctx = document.getElementById('myChart').getContext('2d');
+            
+            var arraydata = [];
+            
+            
+                for(let i = 0, k = 0, l = 0, m = 0; i < obj.length, k < label.length, l < colors.length, m < opacity.length; i ++, k ++, l ++, m ++) {
+                var dataset = {
+                    label: label[k],
+                    data: obj[i],
+                    backgroundColor: colors[l] + opacity[m],
+                    borderColor:  colors[l],
+                    lineTension: 0,
+                    pointBackgroundColor: 'white',
+                    pointBorderColor: colors,}
+                arraydata.push(dataset);
+                console.log(obj[i]);
+                }
+
+                for(let j = 0; j < labels.length; j ++) {
+                var myChart = new Chart(ctx, {
+                    type: chartType,
+                    data: {
+                        labels: labels[j],
+                        datasets: arraydata
+                    }   
+                })    
+                
+            }
+        </script>
+        
+        <!--<f:if condition="{Select} === 'pie'">
+            <script>
+                var chartType = '{Select}';
+            var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
+            var labels = JSON.parse('<f:format.htmlentitiesDecode>{csvlabels}</f:format.htmlentitiesDecode>');
+            var label = JSON.parse('<f:format.htmlentitiesDecode>{csvlabel}</f:format.htmlentitiesDecode>');
+            var colors = JSON.parse('<f:format.htmlentitiesDecode>{csvcolors}</f:format.htmlentitiesDecode>');
+            var opacity = JSON.parse('<f:format.htmlentitiesDecode>{csvopacity}</f:format.htmlentitiesDecode>');
+            var ctx = document.getElementById('myChart').getContext('2d');
+            
+            var arraydata = [];
+
+            for(let i = 0, l = 0, m = 0; i < obj.length, l < colors.length, m < opacity.length; i ++, l ++, m ++) {
+                var dataset = {
+                    label: 'bonjour monde',
+                    data: obj[i],
+                    backgroundColor: colors[l] + opacity[m],
+                    borderColor:  colors[l]
+                }
+                arraydata.push(dataset);
+                console.log(obj)
+                }
+
+                for(let j = 0; j < label.length; j ++) {
+                var myChart = new Chart(ctx, {
+                    type: chartType,
+                    data: {
+                        labels: label[j],
+                        datasets: arraydata
+                    }   
+                })    
+                
+            }
+            </script>
+        </f:if>-->
+        <canvas class="chartum" id="myChart"></canvas>
+        <a style="display:flex; justify-content:center; align-content: center;" href="fileadmin/user_upload/{download}.csv" download>Télécharger</a>
+    </div>
+</f:section>
+
+
+

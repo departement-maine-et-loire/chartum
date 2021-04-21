@@ -12,10 +12,10 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Visualisation CSV',
-    'description' => '',
+    'description' => 'Visualisation de données csv dans un graphique',
     'category' => 'plugin',
-    'author' => '',
-    'author_email' => '',
+    'author' => 'UNI stagiaire',
+    'author_email' => 'b.mezerette@maine-et-loire.fr',
     'state' => 'alpha',
     'uploadfolder' => '',
     'createDirs' => '',

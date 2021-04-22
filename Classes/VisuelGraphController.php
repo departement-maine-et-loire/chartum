@@ -36,7 +36,7 @@ class VisuelGraphController extends ActionController {
         $file = fopen($path, 'r');
         $data = [];
            
-        while ($row = fgetcsv($file)) {
+        while ($row = fgetcsv($file, 0, ";")) {
              
             array_push($data, array_slice($row, 1, -2));
 
@@ -52,7 +52,7 @@ class VisuelGraphController extends ActionController {
         $file = fopen($path, 'r');
         $label = [];
 
-        while ($row2 = fgetcsv($file)) {
+        while ($row2 = fgetcsv($file, 0, ";")) {
             array_push($label, $row2[0]);
         }
         array_shift($label);
@@ -66,7 +66,7 @@ class VisuelGraphController extends ActionController {
         $file = fopen($path, 'r');
         $labels = [];
 
-        while ($row3 = fgetcsv($file)) {
+        while ($row3 = fgetcsv($file, 0, ";")) {
             array_push($labels, array_slice($row3, 1, -2));
         }
         $onlylabels = [];
@@ -82,7 +82,7 @@ class VisuelGraphController extends ActionController {
         $file = fopen($path, 'r');
         $colors = [];
 
-        while ($row4 = fgetcsv($file)) {
+        while ($row4 = fgetcsv($file, 0, ";")) {
             array_push($colors, array_slice($row4, -2, -1));
         }
         array_shift($colors);
@@ -96,7 +96,7 @@ class VisuelGraphController extends ActionController {
         $file = fopen($path, 'r');
         $opacity = [];
 
-        while ($row5 = fgetcsv($file)) {
+        while ($row5 = fgetcsv($file, 0, ";")) {
             array_push($opacity, array_slice($row5, -1));
         }
 

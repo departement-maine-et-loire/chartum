@@ -21,6 +21,8 @@ class VisuelGraphController extends ActionController {
         $this->view->assign('csvcolors', $csvcolors);
         $csvopacity = $this->getcsvopacity($settings['input_2']);
         $this->view->assign('csvopacity', $csvopacity);
+        $csvtransparence = $this->getcsvtransparence($settings['input_2']);
+        $this->view->assign('csvtransparence', $csvtransparence); 
         $downloadfile = 
         $this->configurationManager->getContentObject()->data['uid'];
         $outfile = hash('sha1', $downloadfile);
@@ -105,6 +107,22 @@ class VisuelGraphController extends ActionController {
 
         return $jsonopacity;
 
+    }
+
+    public function getcsvtransparence($path) {
+
+        $file = fopen($path, 'r');
+        $transparence = [];
+
+        while ($row6 = fgetcsv($file)) {
+            array_push($transparence, array_slice($row6, -2));
+        }
+
+        array_shift($transparence);
+        
+        $jsontransparence = json_encode($transparence);
+       
+        return $jsontransparence;
     }
 
     

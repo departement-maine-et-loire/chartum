@@ -15,10 +15,9 @@
             var colors = JSON.parse('<f:format.htmlentitiesDecode>{csvcolors}</f:format.htmlentitiesDecode>');
             var opacity = JSON.parse('<f:format.htmlentitiesDecode>{csvopacity}</f:format.htmlentitiesDecode>');
             var ctx = document.getElementById('myChart').getContext('2d');
-            
             var arraydata = [];
             
-            
+            if (chartType === 'line' || chartType === 'bar' || chartType === 'radar') {
                 for(let i = 0; i < obj.length; i ++) {
                 var dataset = {
                     label: label[i],
@@ -30,23 +29,36 @@
                     pointBorderColor: colors[i]}
                 arraydata.push(dataset);
                 }
-
                 for(let j = 0; j < labels.length; j ++) {
                 var myChart = new Chart(ctx, {
                     type: chartType,
                     data: {
                         labels: labels[j],
                         datasets: arraydata
-
-                    }   
-                    
+                    }    
                 })    
                 
             }
-        </script>
-        
-      
-        
+            } else { //Pie and Doughnut
+                var dataset = {
+                    label: 'bonjour',
+                    data: obj,
+                    backgroundColor: colors,
+                    borderColor:  'white',
+                    lineTension: 0,
+                    pointBackgroundColor: 'white',
+                    pointBorderColor: colors
+                }
+                arraydata.push(dataset);
+                var myChart = new Chart(ctx, {
+                    type: chartType,
+                    data: {
+                        labels: label,
+                        datasets: arraydata,
+                    }   
+                })    
+            } 
+        </script>  
     </div>
 </f:section>
 

@@ -32,6 +32,11 @@ class VisuelGraphController extends ActionController {
     $this->view->assign('csvlabels', json_encode($this->labels) );
     $this->view->assign('csvcolors', json_encode($this->colors) );
     $this->view->assign('csvopacity', json_encode($this->opacities) );
+
+
+  
+    $this->view->assign('filesize', $this->fileSizeConvert(filesize($outputPath)));
+
   }
   
   private function getSplittedDatas ($path) {
@@ -75,6 +80,43 @@ class VisuelGraphController extends ActionController {
     if ($inputModifiedDate > $outputModifiedDate) {
       $this->createCsvFile($inputPath, $outputPath);
     }
+  }
+
+  public function fileSizeConvert($outfile) {
+
+    $outfile = floatval($outfile);
+
+    $arrayUnit = array(
+      0 => array (
+        "UNIT" => "To",
+        "VALUE" => pow(1024, 4) 
+      ),
+      1 => array(
+        "UNIT" => "Go",
+        "VALUE" => pow(1024, 3)
+      ),
+      2 => array(
+        "UNIT" => "Mo",
+        "VALUE" => pow(1024, 2)
+      ),
+      3 => array(
+        "UNIT" => "Ko",
+        "VALUE" => 1024
+      ),
+      4 => array(
+        "UNIT" => " octet",
+        "VALUE" => 1
+      ),
+    );
+    foreach($arrayUnit as $arrayItem) {
+      if($outfile >= $arrayItem["VALUE"]) {
+        $result = $outfile / $arrayItem["VALUE"];
+        $result = str_replace(".", "," , strval(round($result, 2))).$arrayItem["UNIT"];
+        break;
+      }
+    }
+
+    return $result;
   }
   
 }

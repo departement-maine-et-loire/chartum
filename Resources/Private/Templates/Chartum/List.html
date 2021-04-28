@@ -2,51 +2,73 @@
     <f:section name="content">
         <script src="{f:uri.resource(path:'js/chart.min.js')}"></script>
         
-        <div>
-        <div style="display:flex; justify-content:center; align-content: center;">{Text}</div> 
-        <canvas class="chartum" id="myChart"></canvas>
-        <a style="display:flex; justify-content:center; align-content: center;" href="fileadmin/user_upload/{download}.csv" download>Télécharger</a>
+        <div class="txtcenter">
+        <f:format.html>{Text}</f:format.html>
+        <canvas class="chartum" id="myChart_{idPlugin}"></canvas>
+        <a href={downloadURL} download>Download chart datas ({filesize})</a>
+        
         
         <script>
+            var idPlugin = {idPlugin};
             var chartType = '{Select}';
             var obj = JSON.parse('<f:format.htmlentitiesDecode>{csvdata}</f:format.htmlentitiesDecode>');
             var labels = JSON.parse('<f:format.htmlentitiesDecode>{csvlabels}</f:format.htmlentitiesDecode>');
             var label = JSON.parse('<f:format.htmlentitiesDecode>{csvlabel}</f:format.htmlentitiesDecode>');
             var colors = JSON.parse('<f:format.htmlentitiesDecode>{csvcolors}</f:format.htmlentitiesDecode>');
             var opacity = JSON.parse('<f:format.htmlentitiesDecode>{csvopacity}</f:format.htmlentitiesDecode>');
-            var ctx = document.getElementById('myChart').getContext('2d');
-            
+            var ctx = document.getElementById('myChart_' + idPlugin).getContext('2d');
+
             var arraydata = [];
-            
-            
-                for(let i = 0; i < obj.length; i ++) {
-                var dataset = {
-                    label: label[i],
-                    data: obj[i],
-                    backgroundColor: colors[i] + opacity[i],
-                    borderColor:  colors[i],
-                    lineTension: 0,
-                    pointBackgroundColor: 'white',
-                    pointBorderColor: colors[i]}
-                arraydata.push(dataset);
-                }
+            var fulltransparence = [];
 
-                for(let j = 0; j < labels.length; j ++) {
-                var myChart = new Chart(ctx, {
-                    type: chartType,
-                    data: {
-                        labels: labels[j],
-                        datasets: arraydata
-
-                    }   
-                    
-                })    
-                
+            for(let k = 0; k < colors.length; k ++) {
+                var loopcolors = colors[k] + opacity[k];
+                fulltransparence.push(loopcolors);
             }
-        </script>
-        
-      
-        
+            
+            if (chartType === 'line' || chartType === 'bar' || chartType === 'radar') {
+                for(let i = 0; i < obj.length; i ++) {
+                    var dataset = {
+                        label: label[i],
+                        data: obj[i],
+                        backgroundColor: colors[i] + opacity[i],
+                        borderColor:  colors[i],
+                        lineTension: 0,
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: colors[i]
+                    }
+                    arraydata.push(dataset);
+                }
+                 
+                    var myChart = new Chart(ctx, {
+                        type: chartType,
+                        data: {
+                            labels: labels,
+                            datasets: arraydata
+                        }    
+                    })    
+                
+                
+                } else { //Pie and Doughnut
+                    var dataset = {
+                        label: 'bonjour',
+                        data: obj,
+                        backgroundColor: fulltransparence,
+                        borderColor:  colors,
+                        lineTension: 0,
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: colors
+                    }
+                    arraydata.push(dataset);
+                    var myChart = new Chart(ctx, {
+                        type: chartType,
+                        data: {
+                            labels: label,
+                            datasets: arraydata,
+                        }   
+                    })    
+                } 
+        </script>  
     </div>
 </f:section>
 

@@ -9,7 +9,7 @@
                 <el>
                     <settings.input_2>
                         <TCEforms>
-                            <label>Ajouter fichier CSV</label>
+                            <label>Add csv file</label>
                             <config>
                                 <type>input</type>
                             </config>
@@ -17,15 +17,16 @@
                     </settings.input_2>
                     <settings.text>
                         <TCEforms>
-                            <label>Ajouter un titre au graphique</label>
+                            <label>Add legend</label>
                             <config>
                                 <type>text</type>
+                                <enableRichtext>true</enableRichtext>
                             </config>
                         </TCEforms>
                     </settings.text>
                     <settings.form>
                         <TCEforms>
-                            <label>Selectionner un type de graphique</label>
+                            <label>Select type chart</label>
                             <config>
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>

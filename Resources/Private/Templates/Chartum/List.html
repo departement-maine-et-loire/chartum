@@ -3,10 +3,12 @@
         <script src="{f:uri.resource(path:'js/chart.min.js')}"></script>
         
         <div class="txtcenter">
-        <f:format.html>{Text}</f:format.html>
+       
         <canvas class="chartum" id="myChart_{idPlugin}"></canvas>
-        <a href={downloadURL} download>Download chart datas ({filesize})</a>
         
+        <a href={downloadURL} target="_blank" download title="Download chart datas - open in new window">Download chart datas (csv - {filesize})</a>
+    </div>
+        <f:format.html>{Text}</f:format.html>
         
         <script>
             var idPlugin = {idPlugin};
@@ -34,7 +36,7 @@
                         backgroundColor: colors[i] + opacity[i],
                         borderColor:  colors[i],
                         lineTension: 0,
-                        pointBackgroundColor: 'white',
+                        pointBackgroundColor: colors[i],
                         pointBorderColor: colors[i]
                     }
                     arraydata.push(dataset);
@@ -69,7 +71,8 @@
                     })    
                 } 
         </script>  
-    </div>
+    
+    
 </f:section>
 
 

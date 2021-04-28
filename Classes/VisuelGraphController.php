@@ -85,6 +85,12 @@ class VisuelGraphController extends ActionController {
   public function fileSizeConvert($outfile) {
 
     $outfile = floatval($outfile);
+    
+    $manyoctet = " octets";
+    
+    if($outfile <= 1) {
+      $manyoctet = " octet";
+    }
 
     $arrayUnit = array(
       0 => array (
@@ -104,7 +110,7 @@ class VisuelGraphController extends ActionController {
         "VALUE" => 1024
       ),
       4 => array(
-        "UNIT" => " octet",
+        "UNIT" => $manyoctet,
         "VALUE" => 1
       ),
     );

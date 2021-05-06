@@ -7,14 +7,17 @@
                 </TCEforms>
                 <type>array</type>
                 <el>
-                    <settings.input_2>
+                    <settings.file>
                         <TCEforms>
                             <label>Add csv file</label>
                             <config>
-                                <type>input</type>
+                                <type>group</type>
+                                <internal_type>file</internal_type>
+                                <maxitems>1</maxitems>
+                                <size>1</size>
                             </config>
                         </TCEforms>
-                    </settings.input_2>
+                    </settings.file>
                     <settings.text>
                         <TCEforms>
                             <label>Add legend</label>

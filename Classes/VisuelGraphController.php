@@ -17,15 +17,15 @@ class VisuelGraphController extends ActionController {
     
     $this->view->assign('Text', $settings['text']);
     $this->view->assign('Select', $settings['form']);
-    
+  
     // Output FILE
     $idPlugin = $this->configurationManager->getContentObject()->data['uid'];
     $outfile = hash('sha1', $idPlugin);
     $outputPath = "fileadmin/user_upload/$outfile.csv";
-    $this->createCsvWithoutColor($settings['input_2'], $outputPath);
+    $this->createCsvWithoutColor($settings['file'], $outputPath);
     $this->view->assign('downloadURL', $outputPath);
     $this->view->assign('idPlugin', $idPlugin);
-    $this->getSplittedDatas($settings['input_2']);
+    $this->getSplittedDatas($settings['file']);
     
     $this->view->assign('csvdata', json_encode($this->datas) );
     $this->view->assign('csvlabel', json_encode($this->legends) );

@@ -27,11 +27,11 @@ The *csv* file must look like this for pie or doughnut chart:
     |Legend2|  xx  |#color|opacity|
     |Legend3|  xx  |#color|opacity|
 
-**Color settings:** hexadecimal.
+**Color settings:** hexadecimal (#ffffff) 6 values.
 
 **Opacity settings:** number between 0 and 100
-- full opacity: low value
-- full transparency: high value.
+- full transparency: low value
+- full opacity: high value.
 
 ## How to use it ?
 

@@ -20,28 +20,33 @@
             var colors = JSON.parse('<f:format.htmlentitiesDecode>{csvcolors}</f:format.htmlentitiesDecode>');
             var opacity = JSON.parse('<f:format.htmlentitiesDecode>{csvopacity}</f:format.htmlentitiesDecode>');
             var ctx = document.getElementById('myChart_' + idPlugin).getContext('2d');
-
+            
             var arraydata = [];
             var fulltransparence = [];
-
+            
             for(let k = 0; k < colors.length; k ++) {
                 var loopcolors = colors[k] + opacity[k];
                 fulltransparence.push(loopcolors);
             }
             
+
             if (chartType === 'line' || chartType === 'bar' || chartType === 'radar') {
+                
                 for(let i = 0; i < obj.length; i ++) {
+                    
                     var dataset = {
                         label: label[i],
                         data: obj[i],
-                        backgroundColor: colors[i] + opacity[i],
                         borderColor:  colors[i],
+                        backgroundColor: colors[i] + opacity[i],
                         lineTension: 0,
                         pointBackgroundColor: colors[i],
-                        pointBorderColor: colors[i]
+                        pointBorderColor: colors[i],
                     }
+                
                     arraydata.push(dataset);
                 }
+            
                  
                     var myChart = new Chart(ctx, {
                         type: chartType,
@@ -78,7 +83,8 @@
                             datasets: arraydata,
                         }   
                     })    
-                } 
+                }
+            
         </script>  
     
     

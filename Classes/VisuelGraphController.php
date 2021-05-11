@@ -38,6 +38,22 @@ class VisuelGraphController extends ActionController {
     $this->view->assign('filesize', $this->fileSizeConvert(filesize($outputPath)));
 
   }
+
+  private function percentToHexadecimal($percent) {
+
+    if ($percent < 0) {
+      $percent = 0;
+    }
+    if($percent > 100) {
+      $percent = 100;
+    }
+    $tmp = 255 * $percent / 100;
+    $hexa = dechex($tmp);
+    if ($percent <= 15) { //15 <= F 
+    $hexa = '0' . $hexa;
+    }
+    return $hexa;
+  }
   
   private function getSplittedDatas ($path) {
     $file = fopen($path, 'r');
@@ -49,7 +65,7 @@ class VisuelGraphController extends ActionController {
       array_push($this->legends, $row[0]);
       array_push($this->datas, array_slice($row, 1, -2));
       array_push($this->colors, $row[$rl-2]);
-      array_push($this->opacities, $row[$rl-1]);
+      array_push($this->opacities, $this->percentToHexadecimal($row[$rl-1]));
     }    
   }
   

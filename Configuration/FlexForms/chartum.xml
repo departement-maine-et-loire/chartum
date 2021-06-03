@@ -1,0 +1,65 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms> 
+                    <sheetsTitle>chartum backend</sheetsTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.file>
+                        <TCEforms>
+                            <label>Add csv file</label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>file</internal_type>
+                                <maxitems>1</maxitems>
+                                <size>1</size>
+                            </config>
+                        </TCEforms>
+                    </settings.file>
+                    <settings.text>
+                        <TCEforms>
+                            <label>Add legend</label>
+                            <config>
+                                <type>text</type>
+                                <enableRichtext>true</enableRichtext>
+                            </config>
+                        </TCEforms>
+                    </settings.text>
+                    <settings.form>
+                        <TCEforms>
+                            <label>Select type chart</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">line</numIndex>
+                                        <numIndex index="1">line</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">bar</numIndex>
+                                        <numIndex index="1">bar</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">doughnut</numIndex>
+                                        <numIndex index="1">doughnut</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">pie</numIndex>
+                                        <numIndex index="1">pie</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4">
+                                        <numIndex index="0">radar</numIndex>
+                                        <numIndex index="1">radar</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.form>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

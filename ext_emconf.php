@@ -11,12 +11,12 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Visualisation CSV',
-    'description' => 'Visualisation de données csv dans un graphique',
+    'title' => 'Chartum',
+    'description' => 'Viewing csv data in a chart',
     'category' => 'plugin',
-    'author' => 'UNI stagiaire',
-    'author_email' => 'b.mezerette@maine-et-loire.fr',
-    'state' => 'alpha',
+    'author' => 'Département de Maine-et-Loire',
+    'author_email' => 'numerique@maine-et-loire.fr',
+    'state' => 'stable',
     'uploadfolder' => '',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,

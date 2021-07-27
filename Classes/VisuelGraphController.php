@@ -23,7 +23,7 @@ class VisuelGraphController extends ActionController {
     $outfile = hash('sha1', $idPlugin);
     $outputPath = "fileadmin/user_upload/$outfile.csv";
     $this->createCsvWithoutColor($settings['file'], $outputPath);
-    $this->view->assign('downloadURL', $outputPath);
+    $this->view->assign('downloadURL', '/'.$outputPath); // need starting / to get good download link
     $this->view->assign('idPlugin', $idPlugin);
     $this->getSplittedDatas($settings['file']);
     
